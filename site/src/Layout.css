@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  background-color: blue;
+
+  --nav-font-color: white;
+  --nav-padding: 30px;
+}
+
+nav h1 {
+  text-decoration: none;
+  color: var(--nav-font-color);
+  padding-left: var(--nav-padding)
+}
+
+nav .links {
+  padding-right: var(--nav-padding)
+}
+
+.links * {
+  padding: 5px;
+  text-decoration: none;
+  color: var(--nav-font-color);
+}
