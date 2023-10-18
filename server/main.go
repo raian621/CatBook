@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"github.com/gin-gonic/gin"
+	
+	"catbook.com/auth"
 )
 
 func main() {
@@ -16,5 +18,16 @@ func main() {
 			"message": "pong",
 		})
 	})
+
+	r.POST("/signin", func(c *gin.Context) {
+		userCreds := auth.UserCredentials
+		c.BindJSON(&userCreds)
+	})
+
+	r.POST("/register", func *gin.Context) {
+		userCreds := auth.UserCredentials
+		c.BindJSON(&userCreds)
+	}
+
 	r.Run()
 }

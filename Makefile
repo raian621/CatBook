@@ -10,7 +10,7 @@ build: build-site build-server
 
 .PHONY: dev-site
 dev-site:
-	@cd server; go run .
+	@cd server; air
 
 .PHONY: dev-server
 dev-server:
