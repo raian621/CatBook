@@ -5,6 +5,7 @@ import CatPage from './pages/CatPage'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
+import { Ping } from './pages/Ping'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path="register" element={<Register/>}/>
           <Route path="signin" element={<SignIn/>}/>
+          <Route path="ping" element={<Ping/>}/>
           <Route path="cat/:catName" element={<CatPage/>}/>
         </Route>
       </Routes>

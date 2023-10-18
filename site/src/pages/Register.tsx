@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { apiUrl } from "src/config"
 
 export default function Register() {
   const username = useRef<string>("")
@@ -10,6 +11,18 @@ export default function Register() {
     console.log({
       username: username.current,
       password: password.current
+    })
+
+    fetch(`${apiUrl}/register`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        username: username.current,
+        password: password.current
+      })
     })
   }
 

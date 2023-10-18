@@ -3,15 +3,20 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"github.com/gin-gonic/gin"
-	
+
 	"catbook.com/auth"
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	fmt.Println("Hello Air!")
-
 	r := gin.Default()
+
+	r.Use()
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowOrigins = []string{"*"}
+
+	r.Use(cors.New(corsConfig))
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -20,14 +25,16 @@ func main() {
 	})
 
 	r.POST("/signin", func(c *gin.Context) {
-		userCreds := auth.UserCredentials
+		userCreds := auth.UserCredentials{}
 		c.BindJSON(&userCreds)
+		fmt.Println(userCreds)
 	})
 
-	r.POST("/register", func *gin.Context) {
-		userCreds := auth.UserCredentials
+	r.POST("/register", func(c *gin.Context) {
+		userCreds := auth.UserCredentials{}
 		c.BindJSON(&userCreds)
-	}
+		fmt.Println(userCreds)
+	})
 
 	r.Run()
 }
