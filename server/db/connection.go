@@ -13,32 +13,30 @@ type DatabaseParams struct {
 	Username string
 	Password string
 	Database string
-	Port     int
+	Port     string
 	SSLMode  string
 }
 
-var database *sql.DB
-
 func databaseURL(dbParams *DatabaseParams) (url string) {
 	url = fmt.Sprintf(
-		"postgresql://%s:%s@%s:%d/sslmode=%s",
+		"postgresql://%s:%s@%s:%s/%s?sslmode=%s",
 		dbParams.Username,
 		dbParams.Password,
 		dbParams.Hostname,
 		dbParams.Port,
 		dbParams.Database,
+		dbParams.SSLMode,
 	)
 
 	return url
 }
 
-func ConnectToDB(dbParams *DatabaseParams) (err error) {
+func ConnectToDB(dbParams *DatabaseParams) (database *sql.DB, err error) {
 	url := databaseURL(dbParams)
 	database, err = sql.Open(dbParams.Provider, url)
+	if err != nil {
+		fmt.Println(database)
+	}
 
-	return err
-}
-
-func GetDatabase() *sql.DB {
-	return database
+	return database, err
 }

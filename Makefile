@@ -39,7 +39,7 @@ server-deps:
 .PHONY: db
 db:
 	@echo "Building docker container for postgres db..."
-	@docker run --name $(DB_CONTAINER) -e POSTGRES_PASSWORD=postgres 0-e POSTGRES_DB=catbook_test -e POSTGRES_USER=catbook -d postgres
+	@docker run --name $(DB_CONTAINER) -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=catbook_test -e POSTGRES_USER=catbook -p 5432:5432 -d postgres
 
 .PHONY: start-db
 start-db:
