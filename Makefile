@@ -34,7 +34,7 @@ site-deps:
 
 .PHONY: server-deps
 server-deps:
-	@cd server; go get
+	@cd server; go get ./...
 
 .PHONY: db
 db:

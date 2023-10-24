@@ -9,7 +9,7 @@ import (
 
 func CreateUser(userCreds *auth.UserCredentials, email string, database *sql.DB) (err error) {
 	if UserOrEmailExists(userCreds.Username, email, database) {
-		err = errors.New("User already exists!")
+		err = errors.New("user already exists")
 	}
 	return err
 }
@@ -23,8 +23,5 @@ func UserOrEmailExists(username, email string, database *sql.DB) bool {
 		SELECT username FROM users WHERE username=? OR email=?;
 	`, username, email)
 
-	if err == sql.ErrNoRows {
-		return false
-	}
-	return true
+	return err != sql.ErrNoRows
 }
