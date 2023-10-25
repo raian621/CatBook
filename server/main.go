@@ -30,6 +30,7 @@ func main() {
 		fmt.Println("Database offline!")
 		panic(err)
 	}
+
 	err = db.CreateTables(database)
 	if err != nil {
 		panic(err)
