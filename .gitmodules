@@ -1,0 +1,6 @@
+[submodule "CatButt"]
+	path = CatButt
+	url = https://github.com/raian621/CatButt
+[submodule "CatFront"]
+	path = CatFront
+	url = https://github.com/raian621/CatFront
